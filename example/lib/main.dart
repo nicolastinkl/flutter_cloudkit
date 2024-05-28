@@ -47,8 +47,7 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  //value.text =
-                   print( await cloudKit.fetchRecordWithRecordName(key.text)  ) ;
+                  value.text = await cloudKit.get(key.text) ?? '';
 
                   setState(() {});
                 },
@@ -57,8 +56,8 @@ class _MyAppState extends State<MyApp> {
 
                ElevatedButton(
                 onPressed: () async {
-                  value.text = await cloudKit.get(key.text) ?? '';
-
+                  
+                  print( await cloudKit.fetchRecordWithRecordName(key.text)  ) ;
                   setState(() {});
                 },
                 child: Text('fetchRecordWithRecordName'),

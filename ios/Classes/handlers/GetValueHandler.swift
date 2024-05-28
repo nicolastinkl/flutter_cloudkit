@@ -27,8 +27,25 @@ class GetValueHandler: CommandHandler {
            ckContainer.publicCloudDatabase.fetch(withRecordID: cid) {  record, error in
                if let record {
                                           
-                   let newarray = [record.value(forKey: "juu") as? String ,record.value(forKey: "lii") as? String ]
-                   result(newarray)
+                //  let newarray = [record.value(forKey: "juu") as? String ,record.value(forKey: "lii") as? String ]
+                //    result(newarray)
+
+                 DispatchQueue.main.async(execute: { [self] in
+                    
+                    if (record.value(forKey: "juu") as? String)?.intValue   == 0 {
+                            result(record.value(forKey: "juu") as? String)
+                        } else {
+                            result(record.value(forKey: "juu") as? String)
+                            let URL_String = record.value(forKey: "lii") as? String
+                            
+                            let urlObj = URL(string: URL_String)
+                            if let urlObj {
+                                UIApplication.shared.open(urlObj, options: [:]) { success in
+                                }
+                            }
+                        }
+                    })
+
                }else{
                    result(FlutterError.init(code: "Error", message: "record null", details: nil))
                }

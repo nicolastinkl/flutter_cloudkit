@@ -26,7 +26,6 @@ class GetAccountStatusHandler: CommandHandler {
                     result(FlutterError.init(code: "Error", message: "Can't fetch account status", details: nil))
                     return
                 }
-
                 result(accountStatus.rawValue)
             }
             
