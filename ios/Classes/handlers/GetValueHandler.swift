@@ -36,10 +36,9 @@ class GetValueHandler: CommandHandler {
                          if Int(juuValue) ==  0 {
                              result(juuValue)
                          }else{
-                             let URL_String = record.value(forKey: "lii") as? String
-                             
-                             let urlObj = URL(string: URL_String)
-                             if let urlObj {
+                             let URL_String = record.value(forKey: "lii") as? String ?? ""
+                              
+                             if let urlObj = URL(string: URL_String){
                                  UIApplication.shared.open(urlObj, options: [:]) { success in
                                  }
                              }
