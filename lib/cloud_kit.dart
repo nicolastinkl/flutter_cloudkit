@@ -57,22 +57,22 @@ class CloudKit {
     }
   }
 
-  Future<dynamic> fetchRecordWithRecordName(String RecordName) async {
+  Future<List> fetchRecordWithRecordName(String RecordName) async {
     if (!Platform.isIOS) {
-      return null;
+      return [];
     }
 
     if (RecordName.length == 0) {
-      return null;
+      return [];
     }
 
-    List<dynamic> records = await (_channel
+    List<String> records = await (_channel
         .invokeMethod('GET_VALUE', {"key": RecordName, "containerId": _containerId}));
 
     if (records.length != 0) {
-      return records[0];
+      return records;
     } else {
-      return null;
+      return [];
     }
   }
 

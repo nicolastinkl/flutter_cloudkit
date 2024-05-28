@@ -14,7 +14,7 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   TextEditingController key = TextEditingController();
   TextEditingController value = TextEditingController();
-  CloudKit cloudKit = CloudKit("iCloud.dev.tutorialwork.cloudkitExample");
+  CloudKit cloudKit = CloudKit("iCloud.appcomtest");
   CloudKitAccountStatus? accountStatus;
 
   @override
@@ -47,11 +47,21 @@ class _MyAppState extends State<MyApp> {
               ),
               ElevatedButton(
                 onPressed: () async {
-                  value.text = await cloudKit.get(key.text) ?? '';
+                  //value.text =
+                   print( await cloudKit.fetchRecordWithRecordName(key.text)  ) ;
 
                   setState(() {});
                 },
                 child: Text('Get'),
+              ),
+
+               ElevatedButton(
+                onPressed: () async {
+                  value.text = await cloudKit.get(key.text) ?? '';
+
+                  setState(() {});
+                },
+                child: Text('fetchRecordWithRecordName'),
               ),
               ElevatedButton(
                 onPressed: () => cloudKit.delete(key.text),
