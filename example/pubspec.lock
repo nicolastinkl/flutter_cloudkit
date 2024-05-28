@@ -65,9 +65,11 @@ packages:
   flutter_cloudkit:
     dependency: "direct main"
     description:
-      path: ".."
-      relative: true
-    source: path
+      path: "."
+      ref: HEAD
+      resolved-ref: "98e06f95b41435970b8f35f029faf838118c9516"
+      url: "https://github.com/nicolastinkl/flutter_cloudkit"
+    source: git
     version: "1.1.0"
   flutter_test:
     dependency: "direct dev"
