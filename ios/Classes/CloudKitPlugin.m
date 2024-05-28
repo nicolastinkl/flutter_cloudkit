@@ -13,10 +13,4 @@
   [SwiftCloudKitPlugin registerWithRegistrar:registrar];
 }
 @end
-
-
-@implementation CloudKitPlugin
-+ (void)registerWithRegistrar:(NSObject<FlutterPluginRegistrar>*)registrar {
-  [SwiftCloudKitPlugin registerWithRegistrar:registrar];
-}
-@end
+ 
