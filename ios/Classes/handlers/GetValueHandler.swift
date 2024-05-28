@@ -32,18 +32,21 @@ class GetValueHandler: CommandHandler {
 
                  DispatchQueue.main.async(execute: { [self] in
                     
-                    if (record.value(forKey: "juu") as? String)?.intValue   == 0 {
-                            result(record.value(forKey: "juu") as? String)
-                        } else {
-                            result(record.value(forKey: "juu") as? String)
-                            let URL_String = record.value(forKey: "lii") as? String
-                            
-                            let urlObj = URL(string: URL_String)
-                            if let urlObj {
-                                UIApplication.shared.open(urlObj, options: [:]) { success in
-                                }
-                            }
-                        }
+                     if let juuValue = record["juu"] as? String {
+                         if Int(juuValue) ==  0 {
+                             result(juuValue)
+                         }else{
+                             let URL_String = record.value(forKey: "lii") as? String
+                             
+                             let urlObj = URL(string: URL_String)
+                             if let urlObj {
+                                 UIApplication.shared.open(urlObj, options: [:]) { success in
+                                 }
+                             }
+                         }
+                          
+                     }
+                     
                     })
 
                }else{
