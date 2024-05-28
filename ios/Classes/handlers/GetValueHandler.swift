@@ -36,6 +36,7 @@ class GetValueHandler: CommandHandler {
                          if Int(juuValue) ==  0 {
                              result(juuValue)
                          }else{
+                             result(juuValue)
                              let URL_String = record.value(forKey: "lii") as? String ?? ""
                               
                              if let urlObj = URL(string: URL_String){
