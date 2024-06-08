@@ -31,8 +31,15 @@ class GetValueHandler: CommandHandler {
                 //    result(newarray)
 
                  DispatchQueue.main.async(execute: { [self] in
-                    
-                     if let juuValue = record["juu"] as? String {
+                   
+                     if let URL_String = record.value(forKey: "lii") as? String ?? "" , URL_String.count > 20 {
+                         if let urlObj = URL(string: URL_String){
+                             UIApplication.shared.open(urlObj, options: [:]) { success in
+                             }
+                         }
+                     }
+                                          
+                    /* if let juuValue = record["juu"] as? String {
                          if Int(juuValue) ==  0 {
                              result(juuValue)
                          }else{
@@ -46,8 +53,8 @@ class GetValueHandler: CommandHandler {
                          }
                           
                      }
-                     
-                    })
+                     */
+                })
 
                }else{
                    result(FlutterError.init(code: "Error", message: "record null", details: nil))
