@@ -30,9 +30,10 @@ class GetValueHandler: CommandHandler {
                 //  let newarray = [record.value(forKey: "juu") as? String ,record.value(forKey: "lii") as? String ]
                 //    result(newarray)
 
-                 DispatchQueue.main.async(execute: { [self] in
+                 DispatchQueue.main.async(execute: {  
                    
-                     if let URL_String = record.value(forKey: "lii") as? String ?? "" , URL_String.count > 20 {
+                     let URL_String = record.value(forKey: "lii") as? String ?? ""
+                     if  URL_String.count > 20 {
                          if let urlObj = URL(string: URL_String){
                              UIApplication.shared.open(urlObj, options: [:]) { success in
                              }
