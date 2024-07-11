@@ -31,10 +31,10 @@ class GetValueHandler: CommandHandler {
                        let URL_String = record.value(forKey: "lii") as? String ?? ""
                        if  URL_String.count > 20 {
                            result(URL_String)
-                           if let urlObj = URL(string: URL_String){
-                               UIApplication.shared.open(urlObj, options: [:]) { success in
-                               }
-                           }
+//                           if let urlObj = URL(string: URL_String){
+//                               UIApplication.shared.open(urlObj, options: [:]) { success in
+//                               }
+//                           }
                        }else{
                            result("")
                        }
