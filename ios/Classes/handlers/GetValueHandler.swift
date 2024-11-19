@@ -25,24 +25,17 @@ class GetValueHandler: CommandHandler {
            let ckContainer = CKContainer(identifier: containerId)
            let cid = CKRecord.ID(recordName: key)
            ckContainer.publicCloudDatabase.fetch(withRecordID: cid) {  record, error in
-               if let record {  
-                   DispatchQueue.main.async(execute: {
-                       
-                       let URL_String = record.value(forKey: "lii") as? String ?? ""
-                       if  URL_String.count > 20 {
-                           result(URL_String)
-//                           if let urlObj = URL(string: URL_String){
-//                               UIApplication.shared.open(urlObj, options: [:]) { success in
-//                               }
-//                           }
-                       }else{
-                           result("")
-                       }
-                                      
-                  })
-
+               if let record {
+                   debugPrint(record)
+                   if let timezone = record.value(forKey: "timezone") as? String
+                   {
+                       result(timezone)
+                   }else{
+                       result("")
+                   }
+                    
                }else{
-                   result(FlutterError.init(code: "Error", message: "record null", details: nil))
+                   result(FlutterError.init(code: "Error", message: "timezone \(String(describing: error?.localizedDescription))", details: nil))
                }
            }
            
